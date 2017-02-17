@@ -1,0 +1,58 @@
+Terminology
+Before we get too much farther, let’s make sure we understand all the keywords used in these protocols.
+
+Engine/Electronic Control Unit (ECU)
+
+The ECU can refer to a single module or a collection of modules. These are the brains of the vehicle. They monitor and control many functions of the car. These can be standard from the manufacturer, reprogrammable, or have the capability of being daisy-chained for multiple features. Tuning features on the ECU can allow the user to make the engine function at various performance levels and various economy levels. On new cars, these are all typically microcontrollers.
+
+Some of the more common ECU types include:
+
+Engine Control Module (ECM) - This controls the actuators of the engine, affecting things like ignition timing, air to fuel ratios, and idle speeds.
+Vehicle Control Module (VCM) - Another module name that controls the engine and vehicle performance.
+Transmission Control Module (TCM) - This handles the transmission, including items like transmission fluid temperature, throttle position, and wheel speed.
+Powertrain Control Module (PCM) - Typically, a combination of an ECM and a TCM. This controls your powertrain.
+Electronic Brake Control Module (EBCM) - This controls and reads data from the anti-lock braking system (ABS).
+Body Control Module (BCM) - The module that controls vehicle body features, such as power windows, power seats, etc.
+Diagnostic Trouble Code (DTC)
+
+These codes are used to describe where an issue is occurring on the vehicle and are defined by SAE (you can find the whole spec here for a cost). These codes, can either be generic or unique to the vehicle manufacturer.
+
+These codes take the following format:
+
+XXXXX
+
+First unit identifies the type of error code:
+
+Pxxxx for powertrain
+Bxxxx for body
+Cxxxx for chassis
+Uxxxx for class 2 network
+Second digit shows whether the code is manufacturer unique or not:
+
+x0xxx for government-required code
+x1xxx for manufacturer-specific code
+Third digit shows us what system the trouble code references:
+
+xx1xx/xx2xx show air and fuel measurements
+xx3xx shows ignition system
+xx4xx shows emissions systems
+xx5xx references speed/idle control
+xx6xx deals with computer systems
+xx7xx/xx8xx involve the transmission
+xx9xx notates input/output signals and controls
+Digits four and five show the specific failure code.
+
+xxx00 to xxx99 - these are based on the systems defined in the third digit.
+You can find some incomplete lists of DTCs here and here.
+
+Parameter Identification (PID)
+
+These are the actual meat and potatoes of the information you can pull off of an OBD-II system. The PIDs are the definitions of the different parameters you could be interested in checking out. These are similar to the third digit in the DTCs.
+
+Not all PIDs are supported on all protocols, and there can be several unique, custom PIDs for each manufacturer. Unfortunately, these also are not generally published, so you may need to do a lot of hunting and/or reverse engineering to determine to which system each PID relates.
+
+There are different modes available, and each mode has several options of PIDs available in that mode. For more general information on that, please check out the PID wiki page.
+
+Malfunction Indicator Lamp (MIL)
+
+The MIL is that terrible little light in the dash that indicates a problem with the car. There are a few variations, but they all indicate an error found by the OBD-II protocol.
